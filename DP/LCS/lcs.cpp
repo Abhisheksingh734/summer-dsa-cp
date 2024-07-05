@@ -55,3 +55,32 @@ int longestCommonSubsequence(string text1, string text2)
     vector<vector<int>> dp(n + 1, vector<int>(m + 1, -1));
     return lcs_memo(text1, text2, n, m, dp);
 }
+
+int longestCommonSubString(string nums1, string nums2)
+{
+    int n = nums1.size();
+    int m = nums2.size();
+
+    // Create a new dp matrix
+    vector<vector<int>> dp(n + 1, vector<int>(m + 1, 0));
+    int ans = 0;
+    for (int i = 1; i < n + 1; i++)
+    {
+        for (int j = 1; j < m + 1; j++)
+        {
+            // answer for "ab" "ab" would be answer at "a""a" + 1
+            if (nums1[i - 1] == nums2[j - 1])
+            {
+                dp[i][j] = dp[i - 1][j - 1] + 1;
+                ans = max(ans, dp[i][j]);
+            }
+            // we need to start a new substring because substrings are continous
+            else
+            {
+                dp[i][j] = 0;
+            }
+        }
+    }
+
+    return ans;
+}
