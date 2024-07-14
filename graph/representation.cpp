@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-void dfs(int node, vector<int> adj[], int vis[], vector<int> &ls)
+void df(int node, vector<int> adj[], int vis[], vector<int> &ls)
 {
     vis[node] = 1;
 
@@ -11,7 +11,29 @@ void dfs(int node, vector<int> adj[], int vis[], vector<int> &ls)
     {
         if (!vis[it])
         {
-            dfs(it, adj, vis, ls);
+            df(it, adj, vis, ls);
+        }
+    }
+}
+
+void bfs(int node, vector<int> adj[], vector<int> &vis)
+{
+    vis[node] = 1;
+    queue<int> q;
+
+    q.push(node);
+    while (!q.empty())
+    {
+        int node = q.front();
+        q.pop();
+
+        for (auto it : adj[node])
+        {
+            if (!vis[it])
+            {
+                vis[it] = 1;
+                q.push(it);
+            }
         }
     }
 }
