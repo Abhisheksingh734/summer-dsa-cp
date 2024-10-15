@@ -26,7 +26,6 @@ vector<int> dailyTemperatures(vector<int> &t)
 
         st.push(i);
     }
-
     return ans;
 }
 
