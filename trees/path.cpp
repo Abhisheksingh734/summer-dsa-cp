@@ -15,43 +15,43 @@ struct TreeNode
     }
 };
 
-// vector<vector<int>> zigZagTraversal(TreeNode *root)
-// {
-//     vector<vector<int>> ans;
-//     if (!root)
-//         return ans;
+vector<vector<int>> zigZagTraversal(TreeNode *root)
+{
+    vector<vector<int>> ans;
+    if (!root)
+        return ans;
 
-//     queue<TreeNode *> q;
-//     q.push(root);
+    queue<TreeNode *> q;
+    q.push(root);
 
-//     bool flag = true;
+    bool flag = true;
 
-//     while (!q.empty())
-//     {
-//         int size = q.size();
+    while (!q.empty())
+    {
+        int size = q.size();
 
-//         vector<int> level(size);
-//         for (int i = 0; i < size; i++)
-//         {
-//             TreeNode *node = q.front();
-//             q.pop();
+        vector<int> level(size);
+        for (int i = 0; i < size; i++)
+        {
+            TreeNode *node = q.front();
+            q.pop();
 
-//             int index = (flag) ? i : size - i - 1;
+            int index = (flag) ? i : size - i - 1;
 
-//             level[index] = node->data;
+            level[index] = node->data;
 
-//             if (node->left)
-//                 q.push(node->left);
-//             if (node->right)
-//                 q.push(node->right);
-//         }
+            if (node->left)
+                q.push(node->left);
+            if (node->right)
+                q.push(node->right);
+        }
 
-//         flag = !flag;
-//         ans.push_back(level);
-//     }
+        flag = !flag;
+        ans.push_back(level);
+    }
 
-//     return ans;
-// }
+    return ans;
+}
 
 int height(TreeNode *root, int &maxy)
 {

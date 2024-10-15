@@ -51,9 +51,9 @@ int change(int amt, int coins[], int n)
 int main()
 {
 
-    int n = 1, sum = 3;
+    int n = 3, sum = 3;
 
-    int arr[] = {2};
+    int arr[] = {2, 1, 3};
 
     int ans = change(sum, arr, n);
     cout << ans;

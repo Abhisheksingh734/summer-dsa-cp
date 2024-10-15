@@ -106,11 +106,18 @@ void print_lcs(string x, string y, int n, int m)
         }
     }
 
-    cout << dp[n][m] << endl;
+    for (auto x : dp)
+    {
+        for (auto y : x)
+        {
+            cout << y << " ";
+        }
+        cout << endl;
+    }
 }
 
 int main()
 {
 
-    print_lcs("acabc", "abcds", 5, 5);
+    print_lcs("abcde", "abcde", 5, 5);
 }
