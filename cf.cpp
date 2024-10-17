@@ -92,71 +92,63 @@ int gcd(int a, int b){ return b==0 ? a : gcd(b,a%b);}
 
 
 
-void absake(){
+// void absake(){
 
-    int n,k;
-    cin>>n>>k;
+//     long long arr[3];
+//     cin>>arr[0]>>arr[1]>>arr[2];
 
-    vi arr;
-    for(int i=0;i<n; i++) {
-        int num;cin>>num;
-        arr.pb(num);
-    }
+//     for(long long i=0;i<5;i++){
+//         *min_element(arr, arr+3)+= 1;
+//     }
 
-    map<int,int> mp;
-
-    for(int i=0;i<n;i++){
-        mp[arr[i]]++;
-    }
-
-
-    auto i=mp.begin();
-    auto j = mp.begin();
-    int sum =0;
-    int maxy = 0;
-
-    while(j!=mp.end()){
-         sum += j->second;  // Add the frequency at 'j'
-
-         if( j!=mp.begin() && j->first - prev(j)->first > 1){ // the are not continuos
-            i  = j;  //start window from here
-            sum = j->second; // reset sum 
-        }
-
-
-        // If the window size between `i` and `j` exceeds `k`
-        while (distance(i, j) + 1 > k) {  
-            sum -= i->second;  // Remove the frequency at 'i'
-            ++i;  // Move the left pointer to shrink the window
-        }
-
-        // Update the maximum sum if the current window is valid
-        maxy = max(maxy, sum);
-
-        ++j;
-
-        //  sum += j->second;
-
-
-        // if( j!=mp.begin() && j->first - prev(j)->first > 1){ // the are not continuos
-        //     i  = j;  //start window from here
-        //     sum = j->second; // reset sum 
-        // }
-
-        // if(j - i+1 == k){ // here im checking size of window
-        //     maxy = max(maxy, sum);
-        // }
-
-        // j++;
-
-
-    }
-
-    
-
-           cout<<maxy<<endl;
-
+//     cout<< arr[0] * arr[1] *arr[2]<<endl;
  
+
+// }
+
+
+
+
+
+
+
+
+
+
+void catchs(){
+
+    vector<char> arr = {'P','T','T','P','T'};
+    int k = 1;
+
+    vector<int> p,t;
+    for(int i=0;i<arr.size();i++){
+        if(arr[i]=='T'){
+            t.push_back(i);
+        }
+        else{
+            p.push_back(i);
+        }
+    }
+
+    int i=0,j=0;
+    int cnt = 0;
+    while( i< p.size() && j<t.size()){
+
+        if(abs(p[i] - t[j]) <= k){
+            cnt++;
+            i++;
+            j++;
+        }else{
+
+            if(p[i] > t[j]){
+                j++;
+            }else{
+                i++;
+            }
+        }
+    }
+
+    cout<<cnt<<endl;
 
 }
 
@@ -166,10 +158,22 @@ void absake(){
 
 
 
+
+
+
+
+
+
+
+
+
+
+
 int main(){
   
-    int t; cin>>t;
-    while(t--){ absake();}
+    // int t; cin>>t;
+    // while(t--){ absake();}
+    catchs();
 }
 
 

@@ -283,7 +283,7 @@ bool chai(vector<ll> arr,ll h, ll m){
 
 
 int sol(int M, int N) {
-    int left = 0, right = min(M + 2 * N, 100000); // Some reasonable upper bound
+    int left = 0, right = min(M + 2 * N, 100000); 
     int maxSqLen = 0;
 
     while (left <= right){
@@ -291,17 +291,15 @@ int sol(int M, int N) {
 
         long long reqUnits = 1LL *mid*mid;  
 
-        // Max units we can cover with 2x2 tiles
         long long cov2x2 = min(1LL * N, reqUnits /4)*4;
 
-        // Remaining units to be covered by 1x1 tiles
         long long rem = reqUnits - cov2x2;
 
-        if (rem <= M) {  // Check if 1x1 tiles are enough
-            maxSqLen = mid;  // Update max length
-            left = mid + 1;  // Try to find a larger square
+        if (rem <= M) {  
+            maxSqLen = mid;  
+            left = mid + 1; 
         } else {
-            right = mid - 1;  // Try to find a smaller square
+            right = mid - 1;  
         }
     }
 
