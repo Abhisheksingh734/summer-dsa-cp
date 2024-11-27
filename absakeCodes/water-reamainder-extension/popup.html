@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="style.css">
+  <title>Hydration Reminder</title>
+</head>
+<body>
+  <h1>Water Reminder</h1>
+  <form id="settingsForm">
+    <label for="interval">Reminder Interval (minutes):</label>
+    <input type="number" id="interval" min="1" value="60">
+    <label for="goal">Daily Goal (glasses):</label>
+    <input type="number" id="goal" min="1" value="8">
+    <button type="submit">Save Settings</button>
+  </form>
+  <div id="progress">
+    <p>Daily Progress: <span id="progressCount">0</span>/<span id="goalCount">8</span></p>
+    <button id="addWater">Add Glass</button>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>
