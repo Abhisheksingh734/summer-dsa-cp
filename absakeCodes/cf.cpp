@@ -3,29 +3,29 @@
 
 
     MASTER COMPETITIVE PROGRAMMING
-               _oo0oo_
-              o8888888o
-              88" . "88
-              (| -_- |)
-              0\  =  /0
+            _oo0oo_
+            o8888888o
+            88" . "88
+            (| -_- |)
+            0\  =  /0
             ___/`---'\___
-          .' \\|     |// '.
-         / \\|||  :  |||// \
+        .' \\|     |// '.
+        / \\|||  :  |||// \
         / _||||| -:- |||||- \
-       |   | \\\  -  /// |   |
-       | \_|  ''\---/''  |_/ |
-       \  .-\__  '-'  ___/-. /
-     ___'. .'  /--.--\  `. .'___
-  ."" '<  `.___\_<|>_/___.' >' "".
- | | :  `- \`.;`\ _ /`;.`/ - ` : | |
- \  \ `_.   \_ __\ /__ _/   .-` /  /
+    |   | \\\  -  /// |   |
+    | \_|  ''\---/''  |_/ |
+    \  .-\__  '-'  ___/-. /
+    ___'. .'  /--.--\  `. .'___
+."" '<  `.___\_<|>_/___.' >' "".
+| | :  `- \`.;`\ _ /`;.`/ - ` : | |
+\  \ `_.   \_ __\ /__ _/   .-` /  /
 =====`-.____`.___ \_____/___.-`___.-'=====
 
 
 
 
 ---> stuff you should look for
-        * int overflow, array bounds
+        * ll overflow, array bounds
         * special cases (n=1?)
         * do smth instead of nothing and stay organized
         * WRITE STUFF DOWN
@@ -45,11 +45,11 @@ using ll = long long;
 using db = double;
 using str = string;
 
-using pi = pair<int, int>;
+using pi = pair<ll, ll>;
 using pl = pair<ll, ll>;
 using pd = pair<db, db>;
 
-using vi = vector<int>;
+using vi = vector<ll>;
 using vb = vector<bool>;
 using vl = vector<ll>;
 using vd = vector<db>;
@@ -58,40 +58,59 @@ using vpi = vector<pi>;
 using vpl = vector<pl>;
 using vpd = vector<pd>;
 
-const int MOD = 1e9 + 7;
+const ll MOD = 1e9 + 7;
 #define pb push_back
 
-int gcd(int a, int b) { return b == 0 ? a : gcd(b, a % b); }
+ll gcd(ll a, ll b) { return b == 0 ? a : gcd(b, a % b); }
 
-bool cmp(pair<int, int> &a, pair<int, int> &b)
+bool cmp(pair<ll, ll> &a, pair<ll, ll> &b)
 {
     return a.second > b.second;
 }
 
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+using ll = long long;
+
 void absake()
 {
-    int n;
-    cin >> n; // Input size
-    vector<int> v;
-    v.pb(2);
-    int cnt = 1;
 
-    for (int i = 2; i < n; i++)
+    ll n, l, r;
+
+    cin >> n >> l >> r;
+
+    vector<ll> arr(n);
+    for (ll i = 0; i < n; i++)
     {
-        int sum = cnt + i;
-        v.pb(sum); // Push values dynamically
-        cnt++;
+        cin >> arr[i];
     }
 
-    for (auto x : v)
+    vector<ll> left(arr.begin(), arr.begin() + r); // Elements from 0 to r-1
+    vector<ll> right(arr.begin() + l - 1, arr.end());
+
+    sort(left.begin(), left.end());
+    sort(right.begin(), right.end());
+
+    ll range = r - l + 1;
+    // range = min(range, (int)left.size());
+    // range = min(range, (int)right.size());
+
+    ll lsum = accumulate(left.begin(), left.begin() + range, (0LL));
+
+    ll rsum = accumulate(right.begin(), right.begin() + range, (0LL));
+
+    if (lsum < rsum)
     {
-        cout << x << " ";
+        cout << lsum << endl;
     }
-    cout << endl;
+    else
+    {
+        cout << rsum << endl;
+    }
 }
-
-
-
 
 int main()
 {
@@ -103,89 +122,13 @@ int main()
     int t;
     cin >> t; // Number of test cases
     while (t--)
+    {
         absake();
+    }
 
     return 0;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+//
 
 //
 //

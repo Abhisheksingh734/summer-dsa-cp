@@ -65,6 +65,26 @@ int c(vector<int> &arr){
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 int main(){
 	
 

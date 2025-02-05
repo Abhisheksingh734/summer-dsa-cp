@@ -10,9 +10,8 @@ bool find132pattern(vector<int> &nums)
 
        if compare Y < X ... then we found the pair/?????
 
-
-
     */
+
 
     // vector<int> nextGreater(nums.size(), -1);
     // vector<int> previousGreater(nums.size(), -1);
@@ -65,4 +64,5 @@ bool find132pattern(vector<int> &nums)
 
 int main()
 {
+
 }

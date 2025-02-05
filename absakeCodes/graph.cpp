@@ -152,8 +152,18 @@ void dfs(int vertex, vector<vector<int>> &graph, int par, vector<int> &parent)
     }
 }
 
-vector<int> path(int v, vector<vector<int>> &graph)
+vector<int> path(int v, vector<int> parent)
 {
+    vector<int> ans;
+    while (v != -1)
+    {
+        ans.push_back(v);
+        v = parent[v];
+    }
+
+    reverse(ans.begin(), ans.end());
+
+    return ans;
 }
 
 void absake()
@@ -174,8 +184,37 @@ void absake()
         graph[v].push_back(u);
     }
 
-    dfs(1, graph, -1, parent);
-    cout << parent[1];
+    dfs(1, graph, -1, parent); // dfs call to make the parent array
+
+    int a, b;
+    cin >> a >> b;
+
+    vector<int> patha = path(a, parent);
+    vector<int> pathb = path(b, parent);
+
+    for (auto x : patha)
+    {
+        cout << x << " ";
+    }
+    cout << "\n";
+    for (auto x : pathb)
+    {
+        cout << x << " ";
+    }
+    cout << "\n";
+
+    int lca = -1;
+
+    int min_len = min(patha.size(), pathb.size());
+
+    for (int i = 0; i < min_len; i++)
+    {
+        if (patha[i] != pathb[i])
+            break;
+        lca = patha[i];
+    }
+
+    cout << lca << endl;
 }
 
 int main()

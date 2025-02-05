@@ -67,36 +67,38 @@ template<typename typC,typename typD> ostream &operator<<(ostream &cout,const ve
 template<typename typC> ostream &operator<<(ostream &cout,const vector<typC> &a) { int n=a.size(); if (!n) return cout; cout<<a[0]; for (int i=1; i<n; i++) cout<<' '<<a[i]; return cout; }
 // ===================================END Of the input module ==========================================
 
+const int N = 1e3+10;
 
+vector<bool> vis; 
 
-void dfs(int node, vvi &adjList, vb &vis){
-    vis[node] = 1;
-    cout<<"I am at node "<<node<<endl;
-    for(auto& conn: adjList[node]){
-        if(vis[conn]==true) continue;
-        dfs(conn, adjList, vis);
+void dfs(int vertex, vector<vi> &graph) {
+    cout<<vertex<<endl;
+    vis[vertex] = true;
+    for (int child : graph[vertex]) {
+        cout << "par: " << vertex << " child: " << child << endl;
+        if (vis[child]) continue;
+        dfs(child, graph);
     }
 }
 
+void absake() {
+    int n, m;
+    cin >> n >> m;
 
-void absake(){
-    int nodes;
-    cin>>nodes;
 
-    vvi adjList(nodes);
-    int edges;
-    cin>>edges;
+    vector<vi> graph(n); 
+    vis.assign(n, false); 
 
-    vb vis(nodes, 0);
+    for (int i = 0; i < m; i++){
+        int u, v;
+        cin >> u >> v;
+       
 
-    for(int i=0;i<nodes;i++){
-        int u,v;
-        cin>>u>>v;
-        adjList[u].pb(v);      // unidirectional 
-        // adjList[v].pb(u);      // bidirectional 
+        graph[u].pb(v);
+        graph[v].pb(u);
     }
-    dfs(0, adjList, vis);
 
+    dfs(0, graph); 
 }
 
 

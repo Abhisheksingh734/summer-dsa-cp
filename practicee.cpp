@@ -307,10 +307,7 @@ int sol(int M, int N) {
 }
 
 int main() {
-    int M, N;
-    cin >> M >> N;  // Input the number of 1x1 and 2x2 tiles
-    cout << sol(M, N) << endl;  // Output the maximum length of the square
-    return 0;
+    
 }
 
 
@@ -351,6 +348,26 @@ int solve(vector<ll> arr,ll x){
 	return dp[x];
 }
 
+
+
+
+
+int miniC(){
+	int x,n;
+	cin>>x>>n;
+
+	vector<int> dp(x+1,INT_MAX);
+
+	dp[0] = 0;
+
+	for(int i=1;i<=x;i++){
+		for(auto x: arr){
+			dp[i] = min(dp[i] , dp[i - x] + 1);
+		}	
+	}
+
+	
+}
 
 //dp[i] -> no of ways to form i
 // dp[i] -> sum of all dp[i - k];
