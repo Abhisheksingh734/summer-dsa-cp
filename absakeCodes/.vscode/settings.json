@@ -9,6 +9,12 @@
     "forward_list": "cpp",
     "list": "cpp",
     "new": "cpp",
-    "ostream": "cpp"
+    "ostream": "cpp",
+    "unordered_map": "cpp",
+    "unordered_set": "cpp",
+    "initializer_list": "cpp",
+    "regex": "cpp",
+    "valarray": "cpp",
+    "*.tcc": "cpp"
   }
 }

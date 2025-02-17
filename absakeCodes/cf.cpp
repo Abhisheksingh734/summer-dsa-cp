@@ -78,37 +78,26 @@ using ll = long long;
 void absake()
 {
 
-    ll n, l, r;
+    int n;
+    cin >> n;
+    vector<int> a(n);
+    unordered_map<int, int> freq;
 
-    cin >> n >> l >> r;
-
-    vector<ll> arr(n);
-    for (ll i = 0; i < n; i++)
+    int maxFreq = 0;
+    for (int i = 0; i < n; ++i)
     {
-        cin >> arr[i];
+        cin >> a[i];
+        freq[a[i]]++;
+        maxFreq = max(maxFreq, freq[a[i]]);
     }
 
-    vector<ll> left(arr.begin(), arr.begin() + r); // Elements from 0 to r-1
-    vector<ll> right(arr.begin() + l - 1, arr.end());
-
-    sort(left.begin(), left.end());
-    sort(right.begin(), right.end());
-
-    ll range = r - l + 1;
-    // range = min(range, (int)left.size());
-    // range = min(range, (int)right.size());
-
-    ll lsum = accumulate(left.begin(), left.begin() + range, (0LL));
-
-    ll rsum = accumulate(right.begin(), right.begin() + range, (0LL));
-
-    if (lsum < rsum)
+    if (maxFreq > n / 2)
     {
-        cout << lsum << endl;
+        cout << "NO" << endl;
     }
     else
     {
-        cout << rsum << endl;
+        cout << "YES" << endl;
     }
 }
 
